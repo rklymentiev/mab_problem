@@ -1,5 +1,6 @@
-export FLASK_ENV=development
- 
-export FLASK_APP=app.py 
+```
+$ cd mab_problem/flask_app
+$ export FLASK_APP=app.py
+$ flask run
 
-flask run
+```
