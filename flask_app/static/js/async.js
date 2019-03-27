@@ -2,7 +2,7 @@ window.onload = function() {
 
     $('#start_message').html(`
 		<div>
-    		<h1>Input Actual CTR Values (<i>in [0.0-1.0] range):</i></h1>
+    		<h1>Input actual <b>Conversion Rate</b> values (<i>in [0.0-1.0] range):</i></h1>
 		</div>`).show();
 }
 
@@ -42,56 +42,6 @@ function numberRange (start, end) {
 
 function render(data) {
     console.log(data)
-//    document.getElementById("output_rs").innerHTML = data.output_rs
-//    document.getElementById("output_eg").innerHTML = data.output_eg
-//    document.getElementById("output_ts").innerHTML = data.output_ts
-//    document.getElementById("output_ucb1").innerHTML = data.output_ucb1
-
-
-//    var chart = c3.generate({
-//        data: {
-//            columns: [
-//                ['Random Sampling', data.reward_rs],
-//                ['Epsilon Greedy', data.reward_eg],
-//                ['Thompson Sampling', data.reward_ts],
-//                ['UCB1', data.reward_ucb1],
-//            ],
-//            type: 'bar'
-//        },
-//        axis: {
-//        rotated: true,
-//        x: {
-//            type: 'category',
-//            categories: ['Algorithms']
-//                    }
-//            },
-//        bindto: '#reward_chart'
-//    });
-
-//    var chart = c3.generate({
-//        data: {
-//            columns: [
-//                ['Ad #1', data.ad_1_rs, data.ad_1_eg, data.ad_1_ts, data.ad_1_ucb1],
-//                ['Ad #2', data.ad_2_rs, data.ad_2_eg, data.ad_2_ts, data.ad_2_ucb1]
-//            ],
-//            type: 'bar',
-//            groups: [
-//                ['Ad #1', 'Ad #2']
-//            ]
-//        },
-//        grid: {
-//            y: {
-//                lines: [{value:0}]
-//            }
-//        },
-//        axis: {
-//        x: {
-//            type: 'category',
-//            categories: ['Random Sampling', 'Epsilon Greedy', 'Thompson Sampling', 'UCB1']
-//                    }
-//            },
-//        bindto: '#ad_chart'
-//    });
 
     var container_rew = document.getElementById('reward_chart');
     var data_rew = {
@@ -142,18 +92,18 @@ function render(data) {
     };
     tui.chart.registerTheme('Reward_theme', theme_rew);
     options_rew.theme = 'Reward_theme';
-    tui.chart.barChart(container_rew, data_rew, options_rew);
+    var reward_chart = tui.chart.barChart(container_rew, data_rew, options_rew);
 
     var container_a = document.getElementById('ad_chart');
     var data_a = {
         categories: ['Random Sampling', 'Epsilon Greedy', 'Thompson Sampling', 'UCB1'],
         series: [
             {
-                name: 'Ad #1',
+                name: 'Variant #1',
                 data: [data.ad_1_rs, data.ad_1_eg, data.ad_1_ts, data.ad_1_ucb1]
             },
             {
-                name: 'Ad #2',
+                name: 'Variant #2',
                 data: [data.ad_2_rs, data.ad_2_eg, data.ad_2_ts, data.ad_2_ucb1]
             }
         ]
@@ -162,7 +112,7 @@ function render(data) {
         chart: {
             width: 1100,
             height: 450,
-            title: 'Ratio of Ads Appearance Throughout the Trials',
+            title: 'Ratio of Variant Appearance Throughout the Trials',
             format: '1,000'
         },
         yAxis: {
@@ -191,11 +141,9 @@ function render(data) {
             areaOpacity: 0.7
         }
     };
-
     tui.chart.registerTheme('Ad_theme', theme_a);
     options_a.theme = 'Ad_theme';
-
-    tui.chart.columnChart(container_a, data_a, options_a);
+    var ad_chart = tui.chart.columnChart(container_a, data_a, options_a);
 
 
     var container_reg = document.getElementById('regret_chart');
@@ -240,6 +188,8 @@ function render(data) {
         },
     };
      options_reg.theme = 'Reward_theme';
-    var chart = tui.chart.lineChart(container_reg, data_reg, options_reg);
+    var regret_chart = tui.chart.lineChart(container_reg, data_reg, options_reg);
+
+    document.getElementById("output").innerHTML = regret_chart
 
 }

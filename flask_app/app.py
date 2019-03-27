@@ -58,7 +58,7 @@ def random_sampling(CTR1, CTR2):
     count_series = pd.Series(index_list).value_counts(normalize=True)
     ad_1 = round(count_series[0], 3)
     ad_2 = round(count_series[1], 3)
-
+    regret_list = [round(x,2) for x in regret_list]
     return total_reward, ad_1, ad_2, regret_list
 
 
@@ -85,10 +85,6 @@ def epsilon_greedy(CTR1, CTR2):
     ctr_1 = clicks[1] / impressions[1]
     win_index = np.argmax([ctr_0, ctr_1])  ## select the Ad number with the highest CTR
 
-    temp_output = str('After ' + str(n_init) + ' initial trials Ad # ' + str(win_index) +
-                      ' got the highest CTR = ' + str(round(np.max([ctr_0, ctr_1]), 2)) +
-                      ' (Real CTR value is ' + str(ACTUAL_CTR[win_index]) + ').' +
-                      '<br>It was shown ' + str((1 - e) * 100) + '% of the time.')
     regret = 0
     total_reward = 0
     regret_list = []
@@ -127,9 +123,9 @@ def epsilon_greedy(CTR1, CTR2):
     count_series = pd.Series(index_list).value_counts(normalize=True)
     ad_1 = round(count_series[0], 3)
     ad_2 = round(count_series[1], 3)
+    regret_list = [round(x, 2) for x in regret_list]
 
     return total_reward, ad_1, ad_2, regret_list
-
 
 
 def thompson_sampling(CTR1, CTR2):
@@ -170,6 +166,7 @@ def thompson_sampling(CTR1, CTR2):
     count_series = pd.Series(index_list).value_counts(normalize=True)
     ad_1 = round(count_series[0], 3)
     ad_2 = round(count_series[1], 3)
+    regret_list = [round(x, 2) for x in regret_list]
 
     return total_reward, ad_1, ad_2, regret_list
 
@@ -217,6 +214,7 @@ def ucb1(CTR1, CTR2):
     count_series = pd.Series(index_list).value_counts(normalize=True)
     ad_1 = round(count_series[0], 3)
     ad_2 = round(count_series[1], 3)
+    regret_list = [round(x, 2) for x in regret_list]
 
     return total_reward, ad_1, ad_2, regret_list
 
