@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, abort
+from flask import Flask, render_template, request, jsonify, abort, session
 from scipy.stats import beta, bernoulli
 import pandas as pd
 import numpy as np
@@ -253,6 +253,7 @@ def process():
         regret_ts=regret_ts,
         regret_ucb1=regret_ucb1,
     )
+
 
 
 if __name__ == '__main__':

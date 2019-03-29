@@ -2,7 +2,7 @@ window.onload = function() {
 
     $('#start_message').html(`
 		<div>
-    		<h1>Input actual <b>Conversion Rate</b> values (<i>in [0.0-1.0] range):</i></h1>
+    		<h1>Input an actual <b>Conversion Rate</b> values (<i>in [0.0-1.0] range):</i></h1>
 		</div>`).show();
 }
 
@@ -189,7 +189,5 @@ function render(data) {
     };
      options_reg.theme = 'Reward_theme';
     var regret_chart = tui.chart.lineChart(container_reg, data_reg, options_reg);
-
-    document.getElementById("output").innerHTML = regret_chart
 
 }
