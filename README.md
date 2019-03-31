@@ -1,6 +1,6 @@
 # Solving Multi-Armed Problem
 
-Repo consist of:
+Repository consists of:
 
 * Notebook (`mab_problem/notebook/multi_armed_bandit.ipynb`) with explanations on how to deal with multi-armed problems through four different approaches:
 
@@ -14,7 +14,7 @@ Repo consist of:
 * Flask app (`mab_problem/flask_app`) for interactive experience with 2 variants and 1000 trials.
 
 ### App preview:
-![](https://i.ibb.co/w0JLT2J/peek-new.gif)
+![](https://i.ibb.co/kcH3BnT/peek-new.gif)
 
 To run an app on your machine clone/download the repo and follow the commands:
 ```
